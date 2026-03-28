@@ -1,4 +1,4 @@
-name: Deploy to davidadebayo.free.nf
+name: Deploy to InfinityFree
 
 on:
   push:
@@ -14,12 +14,12 @@ jobs:
       - name: Checkout Code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
+      - name: Setup Node.js (Latest)
         uses: actions/setup-node@v4
         with:
-          node-version: '20'
+          node-version: '24'
 
-      - name: Run Build Script
+      - name: Run Production Build
         run: node scripts/minify.js
 
       - name: FTP Deploy
@@ -28,5 +28,11 @@ jobs:
           server: ${{ secrets.FTP_SERVER }}
           username: ${{ secrets.FTP_USERNAME }}
           password: ${{ secrets.FTP_PASSWORD }}
+          protocol: ftp
+          port: 21
           local-dir: ./dist/
           server-dir: /htdocs/
+          # Optimization
+          dangerous-clean-slate: false 
+          # Verbose logging to debug if it hangs
+          log-level: verbose
