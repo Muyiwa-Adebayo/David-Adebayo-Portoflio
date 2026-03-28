@@ -1,0 +1,21 @@
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+# david adebayo portfolio — apache configuration
+# ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
+
+RewriteEngine On
+
+# ── Force HTTPS ──────────────────────────────────
+# Redirect all traffic from HTTP to HTTPS
+RewriteCond %{HTTP:X-Forwarded-Proto} !https
+RewriteCond %{HTTPS} off
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# ── Clean URLs ───────────────────────────────────
+# Remove .html extension from URLs (optional)
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME}\.html -f
+RewriteRule ^(.*)$ $1.html [NC,L]
+
+# ── Error Documents ──────────────────────────────
+# Redirect 404s to index (SPA behavior) or a 404 page
+ErrorDocument 404 /index.html
