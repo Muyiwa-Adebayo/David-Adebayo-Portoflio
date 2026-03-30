@@ -21,7 +21,16 @@ function updateNav() {
         link.classList.toggle('active', link.getAttribute('href') === '#' + current);
     });
 }
-window.addEventListener('scroll', updateNav, { passive: true });
+let isScrolling = false;
+window.addEventListener('scroll', () => {
+    if (!isScrolling) {
+        window.requestAnimationFrame(() => {
+            updateNav();
+            isScrolling = false;
+        });
+        isScrolling = true;
+    }
+}, { passive: true });
 updateNav();
 
 /* ── Hamburger / Mobile nav ─────────────────────────── */

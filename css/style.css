@@ -1119,6 +1119,7 @@ section {
 .author-avatar {
     width: 52px;
     height: 52px;
+    aspect-ratio: 1/1;
     border-radius: 50%;
     border: 1px solid var(--clr-border);
     display: flex;
@@ -1130,6 +1131,12 @@ section {
     color: #fff;
     flex-shrink: 0;
     text-transform: uppercase;
+    overflow: hidden;
+}
+
+.author-avatar span {
+    display: block;
+    line-height: 1;
 }
 
 .avatar-1 { background: linear-gradient(135deg, #6366f1, #4f46e5); }
