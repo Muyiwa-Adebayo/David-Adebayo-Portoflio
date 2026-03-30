@@ -1120,9 +1120,21 @@ section {
     width: 52px;
     height: 52px;
     border-radius: 50%;
-    object-fit: cover;
-    border: 2px solid var(--clr-border);
+    border: 1px solid var(--clr-border);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--font-display);
+    font-weight: 700;
+    font-size: .9rem;
+    color: #fff;
+    flex-shrink: 0;
+    text-transform: uppercase;
 }
+
+.avatar-1 { background: linear-gradient(135deg, #6366f1, #4f46e5); }
+.avatar-2 { background: linear-gradient(135deg, #ec4899, #db2777); }
+.avatar-3 { background: linear-gradient(135deg, #8b5cf6, #7c3aed); }
 
 .author-info {
     text-align: left;
