@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://davidadebayo.com/sitemap.xml
+Sitemap: https://davidadebayo.free.nf/sitemap.xml
