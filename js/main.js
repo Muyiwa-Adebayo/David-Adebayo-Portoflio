@@ -180,6 +180,7 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
             if (r.ok) {
                 this.reset();
                 success.classList.add('show');
+                trackEvent('contact_form_submission', { 'status': 'success' });
                 setTimeout(() => success.classList.remove('show'), 5000);
             } else { alert('Submission failed — please email me directly.'); }
         })
@@ -191,3 +192,73 @@ document.getElementById('contactForm').addEventListener('submit', function (e) {
 const s = document.createElement('style');
 s.textContent = `@keyframes shake{0%,100%{transform:translateX(0)}20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}`;
 document.head.appendChild(s);
+
+/* ── Analytics & Cookies ──────────────────────────────── */
+const GA_MEASUREMENT_ID = 'G-Z9T1ZGDK06';
+
+// Helper to track events
+function trackEvent(eventName, properties = {}) {
+    if (typeof gtag === 'function' && localStorage.getItem('cookie-consent') === 'accepted') {
+        gtag('event', eventName, properties);
+    }
+}
+
+// Cookie Consent Logic
+const cookieBanner = document.getElementById('cookie-consent');
+const acceptBtn = document.getElementById('cookie-accept');
+const declineBtn = document.getElementById('cookie-decline');
+
+function showCookieBanner() {
+    if (!localStorage.getItem('cookie-consent')) {
+        setTimeout(() => cookieBanner.classList.add('show'), 2000);
+    }
+}
+
+function handleConsent(choice) {
+    localStorage.setItem('cookie-consent', choice);
+    cookieBanner.classList.remove('show');
+    if (choice === 'accepted') {
+        // Enable GA tracking
+        if (typeof gtag === 'function') {
+            gtag('consent', 'update', {
+                'analytics_storage': 'granted'
+            });
+        }
+    }
+}
+
+if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));
+if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
+
+// Initial check
+showCookieBanner();
+
+// Event Listeners for Tracking
+window.addEventListener('DOMContentLoaded', () => {
+    // 1. CV Download
+    const cvLink = document.querySelector('a[download]');
+    if (cvLink) {
+        cvLink.addEventListener('click', () => {
+            trackEvent('cv_download', { 'file_name': 'David Adebayo CV' });
+        });
+    }
+
+    // 2. Project Clicks (using event delegation for modals)
+    document.addEventListener('click', (e) => {
+        const projectLink = e.target.closest('.project-link') || e.target.closest('.project-card');
+        if (projectLink) {
+            const title = projectLink.querySelector('.project-title')?.textContent || 
+                          projectLink.closest('.project-card')?.querySelector('.project-title')?.textContent ||
+                          'Unknown Project';
+            trackEvent('project_view', { 'project_title': title });
+        }
+    });
+
+    // 3. CTA Clicks
+    document.querySelectorAll('.btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+            if (btn.id === 'cookie-accept' || btn.id === 'cookie-decline') return;
+            trackEvent('button_click', { 'button_text': btn.textContent.trim() });
+        });
+    });
+});
