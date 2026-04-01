@@ -231,7 +231,17 @@ if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted
 if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
 
 // Initial check
-showCookieBanner();
+const savedConsent = localStorage.getItem('cookie-consent');
+if (!savedConsent) {
+    showCookieBanner();
+} else if (savedConsent === 'accepted') {
+    // If returning user already accepted, strictly grant consent on load
+    if (typeof gtag === 'function') {
+        gtag('consent', 'update', {
+            'analytics_storage': 'granted'
+        });
+    }
+}
 
 // Event Listeners for Tracking
 window.addEventListener('DOMContentLoaded', () => {

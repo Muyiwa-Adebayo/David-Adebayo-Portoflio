@@ -4,13 +4,52 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-Z9T1ZGDK06"></script>
+    <script>
+        window.dataLayer = window.dataLayer || [];
+        function gtag() { dataLayer.push(arguments); }
+
+        // Default tracking consent to 'denied' before user interaction
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+        });
+
+        gtag('js', new Date());
+        
+        // Basic default setup - IP anonymization
+        gtag('config', 'G-Z9T1ZGDK06', { 'anonymize_ip': true });
+    </script>
     <meta name="description" content="Portfolio of David Adebayo — AI Product Manager &amp; Product Designer " />
     <title>David Adebayo — Portfolio</title>
 
-    <!-- SEO & Social Meta Tags -->
-    <meta property="og:title" content="David Adebayo — Portfolio">
-    <meta property="og:description" content="Experienced AI Product Manager &amp; Product Designer">
+    <!-- Canonical Link -->
+    <link rel="canonical" href="https://davidadebayo.free.nf/">
+
+    <!-- SEO & Traditional Meta Tags -->
+    <meta name="author" content="David Adebayo">
+    <meta name="robots" content="index, follow">
+    <meta name="keywords"
+        content="AI Product Manager in Lagos, UI/UX Designer in Lagos, WordPress Developer in Lagos, Product Strategy in Lagos, Product Owner in Lagos, Prompt Engineer in Lagos">
+    <meta name="theme-color" content="#0a0a0a">
+
+    <!-- Open Graph / Facebook -->
     <meta property="og:type" content="website">
+    <meta property="og:url" content="https://davidadebayo.free.nf/">
+    <meta property="og:title" content="David Adebayo — AI Product Manager &amp; Product Designer">
+    <meta property="og:description"
+        content="Portfolio of David Adebayo — AI Product Manager &amp; Product Designer. I help brands design, manage, and scale products people love to use.">
+    <meta property="og:image" content="https://davidadebayo.free.nf/images/David%20Adebayo%20Clean.png">
+    <meta property="og:site_name" content="David Adebayo Portfolio">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:url" content="https://davidadebayo.free.nf/">
+    <meta name="twitter:title" content="David Adebayo — Portfolio">
+    <meta name="twitter:description"
+        content="Experienced AI Product Manager &amp; Product Designer based in Lagos. I specialize in designing and scaling impactful digital products.">
+    <meta name="twitter:image" content="https://davidadebayo.free.nf/images/David%20Adebayo%20Clean.png">
 
     <!-- Google Fonts -->
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -19,7 +58,32 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/style.min.css">
+    <link rel="stylesheet" href="css/style.min.css?v=1775004013241">
+
+    <!-- Structured Data (JSON-LD) -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "Person",
+      "name": "David Adebayo",
+      "url": "https://davidadebayo.free.nf/",
+      "jobTitle": "AI Product Manager & Product Designer",
+      "location": {
+        "@type": "Place",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Lagos",
+          "addressCountry": "Nigeria"
+        }
+      },
+      "description": "Experienced AI Product Manager & Product Designer specializing in product strategy, UI/UX design, and AI-driven solutions.",
+      "sameAs": [
+        "https://www.linkedin.com/in/davidmuyiwaadebayo",
+        "https://github.com/Muyiwa-Adebayo",
+        "https://x.com/AdebayoMuyiwa"
+      ]
+    }
+    </script>
 </head>
 
 <body>
@@ -850,8 +914,8 @@
             <!-- CUSTOMIZE: Year and name -->
             <p class="footer-copy">
                 © 2026 David Adebayo. All rights reserved.<br />
-                <span style="font-size:.65rem;opacity:.6;"> <a href="https://workpress.free.nf/">WorkPress</a> Designed
-                    &amp; built from scratch.</span>
+                <span style="font-size:.65rem;opacity:.6;">Designed &amp; built from scratch by <a
+                        href="https://workpress.free.nf/">WorkPress</a></span>
             </p>
 
             <!-- CUSTOMIZE: Replace all href="#" with your real profile URLs -->
@@ -1027,7 +1091,21 @@
     <!-- ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━
        JAVASCRIPT
   ━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━━ -->
-    <script src="js/main.min.js"></script>
+
+    <!-- Cookie Consent Banner -->
+    <div id="cookie-consent" class="cookie-banner" role="complementary" aria-label="Cookie consent">
+        <div class="container cookie-inner">
+            <p class="cookie-text">
+                I use cookies to analyze my traffic and improve your experience. By clicking "Accept", you consent to my use of cookies.
+            </p>
+            <div class="cookie-actions">
+                <button id="cookie-accept" class="btn btn-primary btn-sm">Accept</button>
+                <button id="cookie-decline" class="btn btn-outline btn-sm">Decline</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="js/main.min.js?v=1775004013241"></script>
 </body>
 
 </html>

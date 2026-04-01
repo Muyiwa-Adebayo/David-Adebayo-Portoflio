@@ -10,8 +10,14 @@
     <script>
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
-        gtag('js', new Date());
 
+        // Default tracking consent to 'denied' before user interaction
+        gtag('consent', 'default', {
+            'analytics_storage': 'denied'
+        });
+
+        gtag('js', new Date());
+        
         // Basic default setup - IP anonymization
         gtag('config', 'G-Z9T1ZGDK06', { 'anonymize_ip': true });
     </script>

@@ -87,9 +87,10 @@ try {
     const indexPath = path.join(rootDir, 'index.html');
     if (fs.existsSync(indexPath)) {
         let html = fs.readFileSync(indexPath, 'utf8');
+        const ts = Date.now();
         html = html
-            .replace('css/style.css', 'css/style.min.css')
-            .replace('js/main.js', 'js/main.min.js');
+            .replace('css/style.css', `css/style.min.css?v=${ts}`)
+            .replace('js/main.js', `js/main.min.js?v=${ts}`);
         fs.writeFileSync(path.join(distDir, 'index.html'), html);
         console.log('✓ HTML Synchronized');
     }
