@@ -218,10 +218,13 @@ function handleConsent(choice) {
     localStorage.setItem('cookie-consent', choice);
     cookieBanner.classList.remove('show');
     if (choice === 'accepted') {
-        // Enable GA tracking
+        // Enable GA tracking with Consent Mode v2 flags
         if (typeof gtag === 'function') {
             gtag('consent', 'update', {
-                'analytics_storage': 'granted'
+                'analytics_storage': 'granted',
+                'ad_storage': 'granted',
+                'ad_user_data': 'granted',
+                'ad_personalization': 'granted'
             });
         }
     }
@@ -230,17 +233,10 @@ function handleConsent(choice) {
 if (acceptBtn) acceptBtn.addEventListener('click', () => handleConsent('accepted'));
 if (declineBtn) declineBtn.addEventListener('click', () => handleConsent('declined'));
 
-// Initial check
-const savedConsent = localStorage.getItem('cookie-consent');
-if (!savedConsent) {
+// Initial check - only show banner if no choice is saved
+// (The actual consent restoration is handled synchronously in index.html head)
+if (!localStorage.getItem('cookie-consent')) {
     showCookieBanner();
-} else if (savedConsent === 'accepted') {
-    // If returning user already accepted, strictly grant consent on load
-    if (typeof gtag === 'function') {
-        gtag('consent', 'update', {
-            'analytics_storage': 'granted'
-        });
-    }
 }
 
 // Event Listeners for Tracking

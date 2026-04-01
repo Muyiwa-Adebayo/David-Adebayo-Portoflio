@@ -11,15 +11,27 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
 
-        // Default tracking consent to 'denied' before user interaction
+        // Check for existing consent immediately (synchronous)
+        var consentChoice = localStorage.getItem('cookie-consent');
+        var isGranted = (consentChoice === 'accepted');
+
+        // Set default consent based on saved choice OR default to denied
+        // Note: Using Consent Mode v2 flags (ad_storage, etc.)
         gtag('consent', 'default', {
-            'analytics_storage': 'denied'
+            'analytics_storage': isGranted ? 'granted' : 'denied',
+            'ad_storage': isGranted ? 'granted' : 'denied',
+            'ad_user_data': isGranted ? 'granted' : 'denied',
+            'ad_personalization': isGranted ? 'granted' : 'denied',
+            'wait_for_update': 500
         });
 
         gtag('js', new Date());
         
-        // Basic default setup - IP anonymization
-        gtag('config', 'G-Z9T1ZGDK06', { 'anonymize_ip': true });
+        // Configuration - only fires page_view after consent state is established
+        gtag('config', 'G-Z9T1ZGDK06', { 
+            'anonymize_ip': true,
+            'cookie_flags': 'SameSite=None;Secure'
+        });
     </script>
     <meta name="description" content="Portfolio of David Adebayo — AI Product Manager &amp; Product Designer " />
     <title>David Adebayo — Portfolio</title>
@@ -58,7 +70,7 @@
         href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap"
         rel="stylesheet" />
 
-    <link rel="stylesheet" href="css/style.min.css?v=1775004013241">
+    <link rel="stylesheet" href="css/style.min.css?v=1775004899963">
 
     <!-- Structured Data (JSON-LD) -->
     <script type="application/ld+json">
@@ -1105,7 +1117,7 @@
         </div>
     </div>
 
-    <script src="js/main.min.js?v=1775004013241"></script>
+    <script src="js/main.min.js?v=1775004899963"></script>
 </body>
 
 </html>
