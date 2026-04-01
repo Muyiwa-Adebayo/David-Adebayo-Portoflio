@@ -197,8 +197,10 @@ document.head.appendChild(s);
 const GA_MEASUREMENT_ID = 'G-Z9T1ZGDK06';
 
 // Helper to track events
+// Note: analytics_storage is granted by default, so this always fires.
+// GA Consent Mode handles suppression internally if needed.
 function trackEvent(eventName, properties = {}) {
-    if (typeof gtag === 'function' && localStorage.getItem('cookie-consent') === 'accepted') {
+    if (typeof gtag === 'function') {
         gtag('event', eventName, properties);
     }
 }
@@ -218,10 +220,9 @@ function handleConsent(choice) {
     localStorage.setItem('cookie-consent', choice);
     cookieBanner.classList.remove('show');
     if (choice === 'accepted') {
-        // Enable GA tracking with Consent Mode v2 flags
+        // User accepted — upgrade ad signals only (analytics already running)
         if (typeof gtag === 'function') {
             gtag('consent', 'update', {
-                'analytics_storage': 'granted',
                 'ad_storage': 'granted',
                 'ad_user_data': 'granted',
                 'ad_personalization': 'granted'

@@ -11,24 +11,24 @@
         window.dataLayer = window.dataLayer || [];
         function gtag() { dataLayer.push(arguments); }
 
-        // Check for existing consent immediately (synchronous)
+        // Check for existing ad consent (analytics always runs anonymized)
         var consentChoice = localStorage.getItem('cookie-consent');
-        var isGranted = (consentChoice === 'accepted');
+        var adGranted = (consentChoice === 'accepted');
 
-        // Set default consent based on saved choice OR default to denied
-        // Note: Using Consent Mode v2 flags (ad_storage, etc.)
+        // Consent Mode v2 defaults:
+        // - analytics_storage GRANTED by default (IP anonymized, no personal data)
+        // - ad signals only granted if user explicitly accepted
         gtag('consent', 'default', {
-            'analytics_storage': isGranted ? 'granted' : 'denied',
-            'ad_storage': isGranted ? 'granted' : 'denied',
-            'ad_user_data': isGranted ? 'granted' : 'denied',
-            'ad_personalization': isGranted ? 'granted' : 'denied',
-            'wait_for_update': 500
+            'analytics_storage': 'granted',
+            'ad_storage': adGranted ? 'granted' : 'denied',
+            'ad_user_data': adGranted ? 'granted' : 'denied',
+            'ad_personalization': adGranted ? 'granted' : 'denied'
         });
 
         gtag('js', new Date());
-        
-        // Configuration - only fires page_view after consent state is established
-        gtag('config', 'G-Z9T1ZGDK06', { 
+
+        // Fire page_view immediately — analytics consent is already granted
+        gtag('config', 'G-Z9T1ZGDK06', {
             'anonymize_ip': true,
             'cookie_flags': 'SameSite=None;Secure'
         });
