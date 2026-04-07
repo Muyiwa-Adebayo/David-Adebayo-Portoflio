@@ -146,8 +146,59 @@ document.addEventListener('keydown', e => {
     if (e.key === 'Escape') {
         toggleMenu(false);
         document.querySelectorAll('.modal-overlay.open').forEach(o => closeModal(o.id));
+        const lb = document.querySelector('.lightbox-overlay');
+        if (lb && lb.classList.contains('active')) {
+            lb.classList.remove('active');
+            document.body.style.overflow = '';
+        }
     }
 });
+
+/* ── Lightbox Gallery ───────────────────────────────── */
+const zoomables = document.querySelectorAll('[data-zoomable="true"]');
+if (zoomables.length > 0) {
+    const lbOverlay = document.createElement('div');
+    lbOverlay.className = 'lightbox-overlay';
+    lbOverlay.innerHTML = `
+        <button class="lightbox-close" aria-label="Close Gallery">
+            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+            </svg>
+        </button>
+        <img class="lightbox-img" src="" alt="" />
+    `;
+    document.body.appendChild(lbOverlay);
+
+    const lbImg = lbOverlay.querySelector('.lightbox-img');
+    const lbClose = lbOverlay.querySelector('.lightbox-close');
+
+    function closeLightbox() {
+        lbOverlay.classList.remove('active');
+        document.body.style.overflow = '';
+        setTimeout(() => { lbImg.src = ''; }, 400); // clear after animation
+    }
+
+    lbClose.addEventListener('click', closeLightbox);
+    lbOverlay.addEventListener('click', (e) => {
+        if (e.target === lbOverlay) closeLightbox();
+    });
+
+    zoomables.forEach(img => {
+        img.addEventListener('click', () => {
+            lbImg.src = img.src;
+            lbImg.alt = img.alt || 'Case study visual';
+            lbOverlay.classList.add('active');
+            document.body.style.overflow = 'hidden';
+
+            // GA4 Tracking
+            const projectBox = img.closest('.case-study');
+            const projectTitle = projectBox ? projectBox.querySelector('.case-study-title').textContent : 'Unknown';
+            if (typeof trackEvent === 'function') {
+                trackEvent('case_study_image_zoom', { 'image_alt': img.alt, 'project_title': projectTitle.trim() });
+            }
+        });
+    });
+}
 
 /* ── Contact Form ───────────────────────────────────── */
 document.getElementById('contactForm').addEventListener('submit', function (e) {

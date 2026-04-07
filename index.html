@@ -302,8 +302,35 @@
 
                 <div class="projects-grid">
 
-                    <!-- ── PROJECT 1 (featured) — CUSTOMIZE ── -->
+                    <!-- ── PROJECT 1 (featured) — NEW ── -->
                     <article class="project-card project-card--featured reveal">
+                        <img class="project-image" src="images/projects/prankdem-cover.png"
+                            alt="PrankDem - Viral Web App" loading="lazy" />
+                        <div class="project-meta">
+                            <div class="project-tags">
+                                <span class="project-tag">FULL-STACK</span>
+                                <span class="project-tag">GOOGLE FIREBASE</span>
+                                <span class="project-tag">REAL-TIME ANALYTICS</span>
+                            </div>
+                            <h3 class="project-title">PrankDem - Viral Web App</h3>
+                            <p class="project-desc">
+                                A high-performance web application built to test the limits of Google Antigravity and
+                                Firebase. Designed with a minimalist, mobile-first UX, the platform successfully managed
+                                real-time traffic spikes and user engagement tracking with zero downtime.
+                            </p>
+                            <button class="project-link" onclick="openModal('modal-prankdem')"
+                                aria-label="View PrankDem case study">
+                                View Details
+                                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                    stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                    <path stroke-linecap="round" stroke-linejoin="round" d="M17 7l-10 10M7 7h10v10" />
+                                </svg>
+                            </button>
+                        </div>
+                    </article>
+
+                    <!-- ── PROJECT 2 — CUSTOMIZE ── -->
+                    <article class="project-card reveal delay-1">
                         <img class="project-image" src="images/projects/Coastline.png" alt="Coastline Films - Portfolio"
                             loading="lazy" />
                         <div class="project-meta">
@@ -423,7 +450,7 @@
                 <div class="case-study reveal">
                     <div class="case-study-visual">
                         <img class="case-study-image" src="images/projects/GC8_works.png"
-                            alt="GiftCard8 Fintech Platform Mockup" loading="lazy" />
+                            alt="GiftCard8 Fintech Platform Mockup" loading="lazy" data-zoomable="true" />
                         <div class="case-study-overlay" aria-label="Project results">
                             <div class="stat-item">
                                 <div class="stat-value">+150%</div>
@@ -510,7 +537,7 @@
                     <div class="case-study-visual">
                         <img class="case-study-image"
                             src="images/projects/Love-Circle-Locator-Find-Enthronement-Love-Circle-Centers-Near-You-03-28-2026_02_43_PM.png"
-                            alt="Love Circle Locator App" loading="lazy" />
+                            alt="Love Circle Locator App" loading="lazy" data-zoomable="true" />
                         <div class="case-study-overlay" aria-label="Project results">
                             <div class="stat-item">
                                 <div class="stat-value">2 Weeks</div>
@@ -603,10 +630,10 @@
                 <div class="case-study reveal">
                     <div class="case-study-visual">
                         <img class="case-study-image" src="images/projects/ARGUE_works.png" alt="Argue Web Tool Mockup"
-                            loading="lazy" />
+                            loading="lazy" data-zoomable="true" />
                         <div class="case-study-overlay" aria-label="Project results">
                             <div class="stat-item">
-                                <div class="stat-value">Simplified Flow</div>
+                                <div class="stat-value">Simplified</div>
                                 <div class="stat-label">User Experience</div>
                             </div>
                             <div class="stat-item">
@@ -684,6 +711,111 @@
                                 <path stroke-linecap="round" stroke-linejoin="round" d="M17 7l-10 10M7 7h10v10" />
                             </svg>
                         </button>
+                    </div>
+                </div>
+
+                <!-- ── CASE STUDY 4 (PrankDem) ── -->
+                <div class="case-study reveal" id="prankdem-case-study">
+                    <div class="case-study-visual">
+                        <div style="position: relative; margin-bottom: 1.5rem;">
+                            <img class="case-study-image" src="images/projects/prankdem-cover.png" alt="PrankDem Cover"
+                                loading="lazy" data-zoomable="true" />
+                            <div class="case-study-overlay" aria-label="Project results">
+                                <div class="stat-item">
+                                    <div class="stat-value">36+</div>
+                                    <div class="stat-label">Active Users</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">25%</div>
+                                    <div class="stat-label">Retention Rate</div>
+                                </div>
+                                <div class="stat-item">
+                                    <div class="stat-value">100%</div>
+                                    <div class="stat-label">Uptime</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1.5rem;">
+                            <img class="case-study-image" src="images/projects/prankdem-gallery-1.png"
+                                alt="PrankDem Leak View" loading="lazy" style="aspect-ratio: auto; filter: none;" data-zoomable="true" />
+                            <img class="case-study-image" src="images/projects/prankdem-gallery-2.jpg"
+                                alt="PrankDem Success Preview" loading="lazy"
+                                style="aspect-ratio: auto; filter: none;" data-zoomable="true" />
+                        </div>
+                    </div>
+
+                    <div class="case-study-content">
+                        <div class="case-study-number" aria-hidden="true">04</div>
+                        <h3 class="case-study-title">PrankDem — MVP Case Study</h3>
+
+                        <div class="case-accordion">
+                            <button class="accordion-btn" aria-expanded="false">
+                                Overview & Challenge
+                                <span class="accordion-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="accordion-body">
+                                <p>PrankDem is a lightweight web application designed for viral engagement on April
+                                    Fool’s Day. The goal was to test the limits of rapid deployment—moving from a
+                                    conceptual "prank" to a live, tracked, and used product in exactly 20 minutes. In
+                                    the fast-moving digital space, "Speed to Market" is a competitive advantage. I
+                                    wanted to validate how quickly a niche interactive tool could acquire and retain
+                                    users using a lean, high-performance tech stack without sacrificing UI/UX quality.
+                                </p>
+                            </div>
+                        </div>
+
+                        <div class="case-accordion">
+                            <button class="accordion-btn" aria-expanded="false">
+                                The Execution Stack
+                                <span class="accordion-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="accordion-body">
+                                <p>To achieve a sub-30-minute deployment, I utilized an integrated ecosystem: Google
+                                    Antigravity for rapid asset management and Firebase for real-time backend and
+                                    hosting. The product strategy focused on a single, high-impact user action with a
+                                    minimalist, mobile-first interface designed for instant usability. Google Analytics
+                                    was natively integrated to monitor live traffic and user retention patterns in
+                                    real-time.</p>
+                            </div>
+                        </div>
+
+                        <div class="case-accordion">
+                            <button class="accordion-btn" aria-expanded="false">
+                                The Results (24-Hour Sprint)
+                                <span class="accordion-icon" aria-hidden="true">
+                                    <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                        stroke="currentColor" stroke-width="2">
+                                        <path stroke-linecap="round" stroke-linejoin="round" d="M12 4v16m8-8H4" />
+                                    </svg>
+                                </span>
+                            </button>
+                            <div class="accordion-body">
+                                <p>This rapid deployment experiment yielded significant engagement metrics within the
+                                    first day of launch. We accomplished a total build and live deployment time of 20
+                                    Minutes. It acquired 36+ unique users immediately through organic social sharing,
+                                    maintaining a 25% retention rate (9 returning users) within 24 hours while ensuring
+                                    100% stability under instantaneous traffic spikes.</p>
+                            </div>
+                        </div>
+
+                        <a href="https://parkdem-app.web.app/" target="_blank" rel="noopener noreferrer"
+                            class="btn btn-primary">
+                            View Live
+                            <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24"
+                                stroke="currentColor" stroke-width="2" aria-hidden="true">
+                                <path stroke-linecap="round" stroke-linejoin="round" d="M17 7l-10 10M7 7h10v10" />
+                            </svg>
+                        </a>
                     </div>
                 </div>
 
@@ -1096,6 +1228,33 @@
                 <a href="#contact" onclick="closeModal('modal-argue')" class="btn btn-primary">Inquire About Tool ↗</a>
                 <a href="#case-studies" onclick="closeModal('modal-argue')" class="btn btn-outline">Back to Case
                     Study</a>
+            </div>
+        </div>
+    </div>
+
+    <!-- Modal: PrankDem -->
+    <div class="modal-overlay" id="modal-prankdem" role="dialog" aria-modal="true" aria-labelledby="mp-title">
+        <div class="modal">
+            <button class="modal-close" onclick="closeModal('modal-prankdem')" aria-label="Close">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor"
+                    stroke-width="2">
+                    <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+                </svg>
+            </button>
+            <p class="section-label" style="margin-bottom:1rem">Project Detail</p>
+            <h3 id="mp-title"
+                style="font-family:var(--font-display);font-size:1.8rem;font-weight:300;margin-bottom:1rem">PrankDem
+                - Viral Web App</h3>
+            <img src="images/projects/prankdem-cover.png" alt="PrankDem - Viral Web App"
+                style="width:100%;border-radius:8px;margin-bottom:1.5rem" loading="lazy" />
+            <p style="color:var(--clr-text-muted);font-size:.9rem;line-height:1.8;margin-bottom:1.5rem">A
+                high-performance web application designed for viral engagement, built to test the limits of rapid
+                deployment and real-time tracking.</p>
+            <div style="display:flex;gap:1rem;flex-wrap:wrap">
+                <a href="#prankdem-case-study" onclick="closeModal('modal-prankdem')" class="btn btn-primary">Full Case
+                    Study</a>
+                <a href="https://parkdem-app.web.app/" target="_blank" rel="noopener noreferrer"
+                    class="btn btn-outline">View Live ↗</a>
             </div>
         </div>
     </div>
